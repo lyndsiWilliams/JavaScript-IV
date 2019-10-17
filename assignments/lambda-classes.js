@@ -23,12 +23,13 @@ class Instructor extends Person {
         super(attr);
         this.specialty = attr.specialty,
             this.favLanguage = attr.favLanguage,
-            this.catchPhrase = attr.catchPhrase
+            this.catchPhrase = attr.catchPhrase,
+            this.subject = attr.subject
     }
     demo() {
         return `Today we are learning about ${this.subject}.`;
     }
-    grade() {
+    grade(student) {
         return `${student.name} receives a perfect score on ${this.subject}.`;
     }
 }
@@ -43,15 +44,16 @@ class Student extends Person {
         super(attr);
         this.previousBackground = attr.previousBackground,
             this.className = attr.className,
-            this.favSubjects = attr.favSubjects
+            this.favSubjects = attr.favSubjects,
+            this.subject = attr.subject
     }
     listsSubjects() {
         return this.favSubjects;
     }
-    PRAssignment() {
+    PRAssignment(student) {
         return `${student.name} has submitted a PR for ${this.subject}.`
     }
-    sprintChallenge() {
+    sprintChallenge(student) {
         return `${student.name} has begun sprint challenge on ${this.subject}.`
     }
 }
@@ -65,12 +67,15 @@ class ProjectManager extends Instructor {
     constructor(attr) {
         super(attr);
         this.gradClassName = attr.gradClassName,
-            this.favInstructor = attr.favInstructor
+            this.favInstructor = attr.favInstructor,
+            this.name = attr.name,
+            this.channel = attr.channel,
+            this.subject = attr.subject
     }
     standUp() {
         return `${this.name} announces to ${this.channel}, @channel standy times!​​​​​`;
     }
-    debugsCode() {
+    debugsCode(student) {
         return `${this.name} debugs ${student.name}'s code on ${this.subject}`;
     }
 }
@@ -83,7 +88,7 @@ class ProjectManager extends Instructor {
 
 const Hagrid = new Person({
     name: 'Rubeus Hagrid',
-    location: 'Hut outside of Hogwarts',
+    location: 'the Hut outside of Hogwarts',
     age: 60,
     favLanguage: 'HTML',
     specialty: 'Front-end',
@@ -92,7 +97,7 @@ const Hagrid = new Person({
 
 const Bellatrix = new Person({
     name: 'Bellatrix Lestrange',
-    location: 'The House of Black',
+    location: 'the House of Black',
     age: 46,
     favLanguage: 'Python',
     specialty: 'Back-end',
@@ -109,7 +114,8 @@ const McGonagall = new Instructor({
     age: 72,
     favLanguage: 'CSS',
     specialty: 'Front-end',
-    catchPhrase: `If you die, you need not hand it in.`
+    catchPhrase: `If you die, you need not hand it in.`,
+    subject: 'Transfiguration'
 })
 
 const Snape = new Instructor({
@@ -118,7 +124,8 @@ const Snape = new Instructor({
     age: 38,
     favLanguage: 'Python',
     specialty: 'Back-end',
-    catchPhrase: `Always.`
+    catchPhrase: `Always.`,
+    subject: 'Potions'
 })
 
 
@@ -131,7 +138,9 @@ const Harry = new Student({
     age: 16,
     favLanguage: 'CSS',
     specialty: 'Front-end',
-    catchPhrase: `Expecto Patronum!`
+    catchPhrase: `Expecto Patronum!`,
+    favSubjects: 'History of Dark Arts',
+    subject: 'Potions'
 })
 
 const Ron = new Student({
@@ -140,7 +149,9 @@ const Ron = new Student({
     age: 16,
     favLanguage: 'HTML',
     specialty: 'Front-end',
-    catchPhrase: `Why spiders???`
+    catchPhrase: `Why spiders???`,
+    favSubjects: 'Lunch',
+    subject: 'Potions'
 })
 
 const Hermione = new Student({
@@ -149,7 +160,9 @@ const Hermione = new Student({
     age: 16,
     favLanguage: 'JavaScript',
     specialty: 'Back-end',
-    catchPhrase: `It's leviOsa, not levioSA!`
+    catchPhrase: `It's leviOsa, not levioSA!`,
+    favSubjects: 'Arithmancy',
+    subject: 'Transfiguration'
 })
 
 
@@ -162,7 +175,9 @@ const Dumbledore = new ProjectManager({
     age: 150,
     favLanguage: 'HTML',
     specialty: 'Front-end',
-    catchPhrase: `One can never have enough socks.`
+    catchPhrase: `One can never have enough socks.`,
+    channel: 'Hogwarts School of Witchcraft and Wizardry',
+    subject: 'Arithmancy'
 })
 
 const Voldemort = new ProjectManager({
@@ -171,14 +186,57 @@ const Voldemort = new ProjectManager({
     age: 71,
     favLanguage: 'Python',
     specialty: 'Back-end',
-    catchPhrase: `There is no good and evil, there is only power and those too weak to seek it.`
+    catchPhrase: `There is no good and evil, there is only power and those too weak to seek it.`,
+    channel: 'The Death Eaters',
+    subject: 'History of Dark Arts'
 })
 
 
 
 // *** Attribute testing ***
 
+// Person - speak
 
+console.log('TESTING PERSON :');
+
+console.log(Hagrid.speak());
+console.log(Bellatrix.speak());
+
+// Instructor - demo, grade
+
+console.log('TESTING INSTRUCTOR :');
+
+console.log(McGonagall.demo());
+console.log(McGonagall.grade(Hermione));
+
+console.log(Snape.demo());
+console.log(Snape.grade(Ron));
+
+// Student - listsSubjects, PRAssignment, sprintChallenge
+
+console.log('TESTING STUDENT :');
+
+console.log(Harry.listsSubjects());
+console.log(Harry.PRAssignment(Harry));
+console.log(Harry.sprintChallenge(Harry));
+
+console.log(Ron.listsSubjects());
+console.log(Ron.PRAssignment(Ron));
+console.log(Ron.sprintChallenge(Ron));
+
+console.log(Hermione.listsSubjects());
+console.log(Hermione.PRAssignment(Hermione));
+console.log(Hermione.sprintChallenge(Hermione));
+
+// ProjectManager - standUp, debugsCode
+
+console.log('TESTING PROJECTMANAGER :');
+
+console.log(Dumbledore.standUp());
+console.log(Dumbledore.debugsCode(Ron));
+
+console.log(Voldemort.standUp());
+console.log(Voldemort.debugsCode(Harry));
 
 
 
