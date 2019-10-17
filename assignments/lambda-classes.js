@@ -77,6 +77,111 @@ class ProjectManager extends Instructor {
 
 
 
+// *** Objects ***
+
+// Person
+
+const Hagrid = new Person({
+    name: 'Rubeus Hagrid',
+    location: 'Hut outside of Hogwarts',
+    age: 60,
+    favLanguage: 'HTML',
+    specialty: 'Front-end',
+    catchPhrase: `I shouldn't have done that.`
+})
+
+const Bellatrix = new Person({
+    name: 'Bellatrix Lestrange',
+    location: 'The House of Black',
+    age: 46,
+    favLanguage: 'Python',
+    specialty: 'Back-end',
+    catchPhrase: `I may be bad, but I'm perfectly good at it.`
+})
+
+
+
+// Instructor
+
+const McGonagall = new Instructor({
+    name: 'Minerva McGonagall',
+    location: 'Hogwarts',
+    age: 72,
+    favLanguage: 'CSS',
+    specialty: 'Front-end',
+    catchPhrase: `If you die, you need not hand it in.`
+})
+
+const Snape = new Instructor({
+    name: 'Severus Snape',
+    location: 'Hogwarts',
+    age: 38,
+    favLanguage: 'Python',
+    specialty: 'Back-end',
+    catchPhrase: `Always.`
+})
+
+
+
+// Student
+
+const Harry = new Student({
+    name: 'Harry Potter',
+    location: 'Hogwarts',
+    age: 16,
+    favLanguage: 'CSS',
+    specialty: 'Front-end',
+    catchPhrase: `Expecto Patronum!`
+})
+
+const Ron = new Student({
+    name: 'Ron Weasley',
+    location: 'The Burrow',
+    age: 16,
+    favLanguage: 'HTML',
+    specialty: 'Front-end',
+    catchPhrase: `Why spiders???`
+})
+
+const Hermione = new Student({
+    name: 'Hermione Granger',
+    location: 'England',
+    age: 16,
+    favLanguage: 'JavaScript',
+    specialty: 'Back-end',
+    catchPhrase: `It's leviOsa, not levioSA!`
+})
+
+
+
+// Project Manager
+
+const Dumbledore = new ProjectManager({
+    name: 'Albus Dumbledore',
+    location: 'Hogwarts',
+    age: 150,
+    favLanguage: 'HTML',
+    specialty: 'Front-end',
+    catchPhrase: `One can never have enough socks.`
+})
+
+const Voldemort = new ProjectManager({
+    name: 'Voldemort',
+    location: 'Malfoy Manor',
+    age: 71,
+    favLanguage: 'Python',
+    specialty: 'Back-end',
+    catchPhrase: `There is no good and evil, there is only power and those too weak to seek it.`
+})
+
+
+
+// *** Attribute testing ***
+
+
+
+
+
 
 // *** Stretch Problem ***
 // - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
